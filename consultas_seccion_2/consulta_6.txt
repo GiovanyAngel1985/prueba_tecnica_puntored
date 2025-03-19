@@ -1,0 +1,15 @@
+
+WITH total_por_clientes AS (
+	SELECT cliente_id, SUM(monto) AS total_ventas
+	FROM ventas
+	GROUP BY cliente_id
+),
+promedio general AS (
+	SELECT AVG(total_ventas) AS promedio
+	FROM total_por_cliente
+)
+
+SELECT c.id, c.nombre, c.apellido, t.total_ventas
+FROM clientes c
+JOIN total_por_cliente t ON c.id = t.cliente_id
+WHERE t.total_ventas > (SELECT promedio FROM promedio_general)

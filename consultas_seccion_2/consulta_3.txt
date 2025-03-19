@@ -1,0 +1,5 @@
+
+SELECT c.id, CONCAT(c.nombre, ' ', c.apellido) AS nombre_completo,
+FROM clientes c
+LEFT JOIN ventas v ON c.id = v.cliente_id
+GROUP BY c.id, nombre_completo

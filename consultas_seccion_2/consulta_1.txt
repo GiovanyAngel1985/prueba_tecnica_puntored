@@ -1,0 +1,8 @@
+
+SELECT c.id, c.nombre, c.apellido, SUM(v.monto) AS total_ventas
+FROM clientes c
+JOIN ventas v ON c.id = v.cliente_id
+WHERE v.fecha >= DATE_SUB(CURDATE(), Interval 6 MONTH)
+GROUP BY c.id, c.nombre, c.apellido
+ORDER BY total_ventas DESC
+LIMIT 5

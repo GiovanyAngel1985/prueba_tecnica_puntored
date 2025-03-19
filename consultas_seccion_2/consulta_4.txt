@@ -1,0 +1,5 @@
+
+SELECT DATE_FORMAT(v.fecha, '%Y-%m') AS mes, AVG(v.monto) AS ingreso_promedio
+FROM ventas v
+GROUP BY mes
+ORDER BY mes

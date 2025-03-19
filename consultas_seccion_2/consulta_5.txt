@@ -1,0 +1,6 @@
+
+SELECT c.id, c.nombre, c.apellido, SUM(v.monto) AS total_ventas, RANK() OVER (ORDER BY SUM(v.monto) DESC) as ranking
+FROM clientes c
+JOIN ventas v ON c.id = v.cliente_id
+WHERE v.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY c.id, c.nombre, c.apellido

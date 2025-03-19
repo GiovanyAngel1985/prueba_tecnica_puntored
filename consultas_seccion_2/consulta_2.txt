@@ -1,0 +1,6 @@
+
+SELECT c.id, c.nombre, c.apellido, AVG(v.monto)AS ticket_promedio
+FROM clientes c
+JOIN ventas v ON c.id = v.cliente_id
+WHERE v.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY c.id, c.nombre, c.apellido

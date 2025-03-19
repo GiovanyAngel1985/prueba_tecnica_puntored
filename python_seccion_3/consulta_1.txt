@@ -1,0 +1,8 @@
+
+SELECT v.fecha,c.id AS cliente_id, c.nombre, c.apellido
+	COUNT(v.id) AS transacciones,
+	SUM(v.monto) AS monto_total,
+	v.producto
+FROM ventas v
+JOIN clientes c ON v.cliente_id = c.id
+GROUP BY v.fecha, c.id, c.nombre, c.apellido, v.producto
